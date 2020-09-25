@@ -1,12 +1,20 @@
 import React from 'react';
+import { YForm } from 'yforms';
 
-import { YEditor } from 'yeditors';
 // import 'antd/dist/antd.css';
 
 export default () => {
   return (
     <div style={{ padding: 20 }}>
-      <YEditor />
+      <YForm>
+        {[
+          { type: 'input' },
+          {
+            type: 'radio',
+            componentProps: { options: [{ id: '1', name: '2' }] },
+          },
+        ]}
+      </YForm>
     </div>
   );
 };
