@@ -1,0 +1,30 @@
+{
+  "name": "yeditors",
+  "version": "0.0.1",
+  "description": "yeditors",
+  "keywords": [
+    "slate",
+    "editor"
+  ],
+  "author": "黄建峰 <645381995@qq.com>",
+  "homepage": "https://github.com/crazyair/yeditors#readme",
+  "license": "ISC",
+  "main": "lib/yeditors.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crazyair/yeditors.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/crazyair/yeditors/issues"
+  }
+}
