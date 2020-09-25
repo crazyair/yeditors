@@ -7,14 +7,10 @@
     "jsx": "react",
     "esModuleInterop": true,
     "sourceMap": true,
-    "baseUrl": "./",
     "skipLibCheck": true,
     "strict": true,
-    "paths": {
-      "@/*": ["src/*"],
-      "@@/*": ["src/.umi/*"],
-      "yeditors": ["yeditors"]
-    },
+    "baseUrl": "./packages",
+    "paths": { "yeditors": ["yeditors/src"] },
     "allowSyntheticDefaultImports": true
   },
   "exclude": [
