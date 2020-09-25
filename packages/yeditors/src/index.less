@@ -1,0 +1,116 @@
+.editor-main {
+  border: 1px solid #cccccc;
+  box-shadow: 1px 1px 10px #cccccc;
+  padding: 5px;
+  .editor {
+    min-height: 100px;
+    overflow-y: auto;
+    max-height: 500px;
+    .image-form {
+      img {
+        // 图片 hover 加蒙层
+        cursor: pointer;
+        &:hover {
+          filter: contrast(0.7);
+        }
+      }
+    }
+    .temp {
+      .content {
+        &:hover {
+          span {
+            box-shadow: inset 0px 0px 0px 1px #1890ff;
+          }
+        }
+      }
+    }
+    .list {
+      position: relative;
+      .edit {
+        position: absolute;
+        right: 0px;
+        top: -5px;
+        opacity: 0;
+        float: right;
+      }
+      &:hover {
+        box-shadow: inset 0px 0px 0px 1px #1890ff;
+        .edit {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+.editor2 {
+  html,
+  input,
+  textarea {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.4;
+    background: #eee;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  pre {
+    padding: 10px;
+    background-color: #eee;
+    white-space: pre-wrap;
+  }
+
+  :not(pre) > code {
+    font-family: monospace;
+    background-color: #eee;
+    padding: 3px;
+  }
+
+  blockquote {
+    border-left: 2px solid #ddd;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    color: #aaa;
+    font-style: italic;
+  }
+
+  blockquote[dir='rtl'] {
+    border-left: none;
+    padding-left: 0;
+    padding-right: 10px;
+    border-right: 2px solid #ddd;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  td {
+    padding: 10px;
+    border: 2px solid #ddd;
+  }
+
+  input {
+    box-sizing: border-box;
+    font-size: 0.85em;
+    width: 100%;
+    padding: 0.5em;
+    border: 2px solid #ddd;
+    background: #fafafa;
+  }
+
+  input:focus {
+    outline: 0;
+    border-color: blue;
+  }
+
+  // [data-slate-editor] > * + * {
+  //   margin-top: 1em;
+  // }
+}

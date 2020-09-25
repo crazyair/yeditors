@@ -8,3 +8,5 @@ nav:
 # 示例
 
 ## 基础使用
+
+<code src="./demo/demo1.tsx" />
