@@ -26,5 +26,11 @@
   },
   "bugs": {
     "url": "https://github.com/crazyair/yeditors/issues"
+  },
+  "dependencies": {
+    "slate": "^0.59.0",
+    "slate-history": "^0.59.0",
+    "slate-hyperscript": "^0.59.0",
+    "slate-react": "^0.59.0"
   }
 }
