@@ -11,7 +11,8 @@
     "release": "npm run build && npm publish",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
-    "pub": "npm run build && lerna publish",
+    "bootstrap": "lerna bootstrap",
+    "pub": "yarn build && lerna publish",
     "test:coverage": "umi-test --coverage"
   },
   "main": "dist/index.js",
