@@ -23,7 +23,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/crazyair/yeditors.git",
-    "directory": "yforms"
+    "directory": "yeditors"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -31,10 +31,13 @@
   "bugs": {
     "url": "https://github.com/crazyair/yeditors/issues"
   },
+  "peerDependencies": {
+    "antd": "4.x",
+    "@ant-design/icons": "^4.x",
+    "yforms": "^1.x"
+  },
   "dependencies": {
-    "@ant-design/icons": "^4.2.2",
     "@babel/runtime": "^7.11.2",
-    "antd": "^4.6.5",
     "emotion": "^10.0.27",
     "is-url": "^1.2.4",
     "rgb-hex": "^3.0.0",
