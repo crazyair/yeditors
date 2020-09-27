@@ -10,28 +10,60 @@ const initialValue = [
   {
     type: 'paragraph',
     children: [
-      { text: 'This is editable ' },
-      { text: 'rich', bold: true },
-      { text: ' text, ' },
-      { text: 'much', italic: true },
-      { text: ' better than a ' },
-      { text: '<textarea>', code: true },
-      { text: '!' },
+      {
+        text: '多层级坑位',
+      },
     ],
   },
   {
     type: 'paragraph',
     children: [
       {
-        text:
-          "Since it's rich text, you can do things like turn a selection of text ",
+        text: '',
       },
-      { text: 'bold', bold: true },
-      { text: ', or add a semantically rendered block , like this:' },
     ],
   },
-  { type: 'block-quote', children: [{ text: 'A wise quote.' }] },
-  { type: 'paragraph', children: [{ text: 'Try it out for yourself!' }] },
+  {
+    type: 'list',
+    props: {
+      field: 'children',
+    },
+    children: [
+      {
+        type: 'paragraph',
+        children: [
+          {
+            text: '${name}',
+          },
+        ],
+      },
+      {
+        type: 'list',
+        props: {
+          field: 'children2',
+          style: 'margin:0 20px',
+        },
+        children: [
+          {
+            type: 'paragraph',
+            children: [
+              {
+                text: '${name}',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    type: 'paragraph',
+    children: [
+      {
+        text: '',
+      },
+    ],
+  },
 ];
 const data = {
   name: '张三',
