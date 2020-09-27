@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [{ "src": "dcos-dist/**/*", "use": "@now/static" }],
+  "routes": [
+    {
+      "src": "/(.*[.js|.css])",
+      "headers": { "Cache-Control": "max-age=63072000" },
+      "continue": true
+    },
+    { "src": "/(.*)", "dest": "/dcos-dist/$1" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/dcos-dist/index.html" }
+  ],
+  "github": {
+    "enable": false
+  }
+}
