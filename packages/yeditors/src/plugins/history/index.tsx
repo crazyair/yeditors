@@ -1,9 +1,8 @@
 import React from 'react';
 import { useSlate } from 'slate-react';
 import { withHistory, HistoryEditor } from 'slate-history';
-import { RedoOutlined, UndoOutlined } from '@ant-design/icons';
 import { Button, Tooltip } from 'antd';
-import { activeStyle } from '../../utils';
+import { IconFont } from '../../utils';
 import { PluginProps } from '..';
 
 const config: PluginProps['props'] = {
@@ -24,21 +23,17 @@ const config: PluginProps['props'] = {
         <Tooltip title={config.title.undo}>
           <Button
             type="text"
-            style={activeStyle(editor.history.undos.length > 0)}
-            onClick={() => {
-              HistoryEditor.undo(editor);
-            }}
-            icon={<UndoOutlined />}
+            disabled={editor.history.undos.length === 0}
+            onClick={() => HistoryEditor.undo(editor)}
+            icon={<IconFont type="icon-ic_undo" />}
           />
         </Tooltip>
         <Tooltip title={config.title.redo}>
           <Button
             type="text"
-            style={activeStyle(editor.history.redos.length > 0)}
-            onClick={() => {
-              HistoryEditor.redo(editor);
-            }}
-            icon={<RedoOutlined />}
+            disabled={editor.history.redos.length === 0}
+            onClick={() => HistoryEditor.redo(editor)}
+            icon={<IconFont type="icon-ic_undo" rotate={180} />}
           />
         </Tooltip>
       </>

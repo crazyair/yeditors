@@ -1,7 +1,6 @@
 import React from 'react';
-// import { useSlate } from 'slate-react';
-import { Select, Tooltip } from 'antd';
-import { map } from 'lodash';
+import { Select } from 'antd';
+import { map, includes } from 'lodash';
 import { Transforms } from 'slate';
 import { useSlate } from 'slate-react';
 
@@ -9,29 +8,30 @@ import { getValue2, PluginProps } from '..';
 
 const key = 'header';
 
+const getHtml = (value: string) => ({ [key]: value, type: 'paragraph' });
+
 const config: PluginProps['props'] = {
   config: {
     block: true,
     title: '标题',
-    list: ['1', '2', '3', '4', '5', '6'],
+    list: [
+      { id: '', name: '正文' },
+      { id: 'h1', name: '标题 1' },
+      { id: 'h2', name: '标题 2' },
+      { id: 'h3', name: '标题 3' },
+      { id: 'h4', name: '标题 4' },
+      { id: 'h5', name: '标题 5' },
+      { id: 'h6', name: '标题 6' },
+    ],
   },
   withHtml: () => {
     return {
-      H1: () => {
-        const attrs = {
-          type: 'paragraph',
-          [key]: '1',
-        };
-        return attrs;
-      },
-      H2: () => {
-        const attrs = { [key]: '2', type: 'paragraph' };
-        return attrs;
-      },
-      H3: () => {
-        const attrs = { [key]: '3', type: 'paragraph' };
-        return attrs;
-      },
+      H1: () => getHtml('h1'),
+      H2: () => getHtml('h2'),
+      H3: () => getHtml('h3'),
+      H4: () => getHtml('h4'),
+      H5: () => getHtml('h5'),
+      H6: () => getHtml('h6'),
     };
   },
   ToolbarButton: ({ config }) => {
@@ -41,29 +41,27 @@ const config: PluginProps['props'] = {
       Transforms.setNodes(editor, { [key]: v });
     };
     return (
-      <Tooltip title={title}>
-        <Select
-          allowClear
-          style={{ width: 80 }}
-          placeholder={title}
-          bordered={false}
-          onChange={handleChange}
-          value={getValue2(editor, key) as string}
-        >
-          {map(list, value => {
-            return (
-              <Select.Option key={value} value={value}>
-                标题{value}
-              </Select.Option>
-            );
-          })}
-        </Select>
-      </Tooltip>
+      <Select
+        allowClear
+        style={{ width: 100 }}
+        placeholder={title}
+        bordered={false}
+        onChange={handleChange}
+        value={(getValue2(editor, key) as string) || ''}
+      >
+        {map(list, (value, index) => {
+          return (
+            <Select.Option key={index} value={value.id}>
+              {value.name}
+            </Select.Option>
+          );
+        })}
+      </Select>
     );
   },
   processElement: ({ element, attributes, children }) => {
-    if (element[key]) {
-      return React.createElement(`h${element[key]}`, attributes, children);
+    if (element[key] && includes(element[key], 'h')) {
+      return React.createElement(`${element[key]}`, attributes, children);
     }
   },
 };

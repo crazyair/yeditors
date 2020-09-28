@@ -157,7 +157,7 @@ export default () => {
                     console.log(JSON.stringify(html, null, 2));
                     const str = YEditor.serialize(html, { data });
                     console.log(str);
-                    clipboard.copy(buildPreviewHtml(str));
+                    // clipboard.copy(buildPreviewHtml(str));
                     message.success('复制成功');
                   },
                   children: '复制 HTML',

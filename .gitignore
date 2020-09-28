@@ -19,7 +19,7 @@
 .umi-production
 .umi-test
 .env.local
-
+.vscode
 
 /packages/*/node_modules
 /packages/*/yarn.lock
