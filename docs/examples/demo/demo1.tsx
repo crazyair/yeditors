@@ -1,10 +1,9 @@
 import React, { useRef } from 'react';
 import { YForm } from 'yforms';
-import { Card, message } from 'antd';
+import { message } from 'antd';
 import { useRouteMatch } from 'umi';
 import { useClipboard } from 'use-clipboard-copy';
 import { YEditor } from 'yeditors';
-// import 'antd/dist/antd.css';
 
 const initialValue = [
   {
@@ -40,7 +39,7 @@ const initialValue = [
       {
         type: 'list',
         props: {
-          field: 'children2',
+          field: 'children',
           style: 'margin:0 20px',
         },
         children: [
@@ -76,7 +75,7 @@ const data = {
   children: [
     {
       name: '第一层',
-      children2: [{ name: '第二层', children3: [{ name: '第三层' }] }],
+      children: [{ name: '第二层', children: [{ name: '第三层' }] }],
     },
   ],
 };
@@ -128,7 +127,6 @@ export default () => {
         }}
       >
         {[
-          { type: 'input', label: 'title', name: 'title' },
           {
             type: 'custom',
             label: '模板',
@@ -138,13 +136,6 @@ export default () => {
             format: value => JSON.stringify(value),
             children: <YEditor />,
           },
-          // {
-          //   type: 'yEditor2',
-          //   label: '模板',
-          //   scenes: { yEditor2: true },
-          //   componentProps: { formatData: data },
-          //   name: 'content',
-          // },
           {
             type: 'space',
             items: [
@@ -168,7 +159,6 @@ export default () => {
                     console.log(str);
                     clipboard.copy(buildPreviewHtml(str));
                     message.success('复制成功');
-                    // YEditor.serialize(html, data);
                   },
                   children: '复制 HTML',
                 },

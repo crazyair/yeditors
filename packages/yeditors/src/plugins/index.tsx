@@ -96,6 +96,7 @@ const pluginMap: PluginProps[] = [
   { type: 'temp', props: require('./temp').default },
   { type: 'list', props: require('./list').default },
   { type: 'delete', props: require('./delete').default },
+  { type: 'question', props: require('./question').default },
 ];
 
 export default pluginMap;
