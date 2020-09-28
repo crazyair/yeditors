@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import regHex from 'rgb-hex';
 import { Editor } from 'slate';
 import { useSlate } from 'slate-react';
+import { YForm } from 'yforms';
 import { colors, PluginProps } from '..';
 
 import './index.less';
@@ -36,12 +37,15 @@ const config: PluginProps['props'] = {
     };
     const [color, setColor] = useState('');
     const activeColor = get(Editor.marks(editor), key);
+    const [visible, setVisible] = useState(false);
 
     return (
       <>
         <Dropdown.Button
           size="small"
           type="ghost"
+          visible={visible}
+          onVisibleChange={flag => setVisible(flag)}
           icon={<DownOutlined />}
           title={title}
           placement="bottomCenter"
@@ -63,6 +67,22 @@ const config: PluginProps['props'] = {
                     </div>
                   );
                 })}
+                <YForm
+                  onFinish={values => {
+                    handleChange(values.color);
+                    setColor(values.color);
+                    setVisible(false);
+                  }}
+                >
+                  {[
+                    {
+                      noStyle: true,
+                      type: 'input',
+                      name: 'color',
+                      componentProps: { placeholder: '自定义颜色 #ccc/red' },
+                    },
+                  ]}
+                </YForm>
               </div>
             </>
           }
