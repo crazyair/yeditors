@@ -8,8 +8,6 @@ import { useSlate } from 'slate-react';
 import { YForm } from 'yforms';
 import { colors, PluginProps } from '..';
 
-import '../color/index.less';
-
 const key = 'backgroundColor';
 
 const config: PluginProps['props'] = {
@@ -47,10 +45,11 @@ const config: PluginProps['props'] = {
           onVisibleChange={flag => setVisible(flag)}
           icon={<DownOutlined />}
           title={title}
-          style={{ padding: '0 5px 0 0' }}
+          className="mr5"
           placement="bottomCenter"
+          trigger={['click']}
           overlay={
-            <div className="color">
+            <div className="select-color">
               {map(list, value => {
                 return (
                   <div

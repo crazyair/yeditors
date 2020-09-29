@@ -1,0 +1,42 @@
+.select-color {
+  width: 250px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+
+  .tag {
+    transition: transform 0.2s;
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    text-align: center;
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+}
+.select-value {
+  width: 320px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+  .tag {
+    transition: transform 0.2s;
+    border-radius: 0%;
+    height: 30px;
+    line-height: 30px;
+    width: 50px;
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    text-align: center;
+    &:hover {
+      // transform: scale(1.3);
+    }
+  }
+}

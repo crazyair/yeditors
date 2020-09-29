@@ -323,5 +323,5 @@ export const getText = (value: any[]) => {
 };
 
 export const IconFont = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_2029574_p1qcc36j0bn.js',
+  scriptUrl: '//at.alicdn.com/t/font_2029574_we3z5f56g6.js',
 });
