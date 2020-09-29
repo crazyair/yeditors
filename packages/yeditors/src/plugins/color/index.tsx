@@ -1,4 +1,4 @@
-import { DownOutlined } from '@ant-design/icons';
+import { DownOutlined, FontColorsOutlined } from '@ant-design/icons';
 import { Dropdown } from 'antd';
 import { get, includes, map } from 'lodash';
 import React, { useState } from 'react';
@@ -43,62 +43,54 @@ const config: PluginProps['props'] = {
       <>
         <Dropdown.Button
           size="small"
-          type="ghost"
           visible={visible}
           onVisibleChange={flag => setVisible(flag)}
           icon={<DownOutlined />}
           title={title}
           placement="bottomCenter"
+          style={{ padding: '0 5px 0 0' }}
           overlay={
-            <>
-              <div className="color">
-                {map(list, value => {
-                  return (
-                    <div
-                      onClick={() => {
-                        setColor(value);
-                        handleChange(activeColor === value ? undefined : value);
-                      }}
-                      key={value}
-                      className="tag"
-                      style={{ backgroundColor: value }}
-                    >
-                      &nbsp;
-                    </div>
-                  );
-                })}
-                <YForm
-                  onFinish={values => {
-                    handleChange(values.color);
-                    setColor(values.color);
-                    setVisible(false);
-                  }}
-                >
-                  {[
-                    {
-                      noStyle: true,
-                      type: 'input',
-                      name: 'color',
-                      componentProps: { placeholder: '自定义颜色 #ccc/red' },
-                    },
-                  ]}
-                </YForm>
-              </div>
-            </>
+            <div className="color">
+              {map(list, value => {
+                return (
+                  <div
+                    onClick={() => {
+                      setColor(value);
+                      handleChange(activeColor === value ? undefined : value);
+                    }}
+                    key={value}
+                    className="tag"
+                    style={{ backgroundColor: value }}
+                  >
+                    &nbsp;
+                  </div>
+                );
+              })}
+              <YForm
+                onFinish={values => {
+                  handleChange(values.color);
+                  setColor(values.color);
+                  setVisible(false);
+                }}
+              >
+                {[
+                  {
+                    noStyle: true,
+                    type: 'input',
+                    name: 'color',
+                    componentProps: { placeholder: '自定义颜色 #ccc/red' },
+                  },
+                ]}
+              </YForm>
+            </div>
           }
         >
-          <span
-            style={{
-              borderBottom: `2px solid ${color}`,
-              lineHeight: 1,
-              width: 12,
-            }}
-            onClick={() => {
-              handleChange(activeColor === color ? undefined : color);
-            }}
-          >
-            A
-          </span>
+          <FontColorsOutlined
+            onClick={() =>
+              handleChange(activeColor === color ? undefined : color)
+            }
+            style={{ color }}
+          />
         </Dropdown.Button>
       </>
     );

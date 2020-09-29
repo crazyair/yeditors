@@ -42,8 +42,9 @@ const config: PluginProps['props'] = {
       <Tooltip title={title}>
         <Select
           allowClear
+          size="small"
           placeholder={title}
-          style={{ width: 80 }}
+          style={{ width: 70 }}
           bordered={false}
           onChange={handleChange}
           value={get(Editor.marks(editor), key)}

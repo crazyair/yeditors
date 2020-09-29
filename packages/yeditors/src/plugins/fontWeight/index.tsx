@@ -10,7 +10,7 @@ const key = 'fontWeight';
 const config: PluginProps['props'] = {
   config: {
     list: ['bold', 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
-    title: '字体重量',
+    title: '重量',
   },
   ToolbarButton: ({ config }) => {
     const editor = useSlate();
@@ -22,9 +22,10 @@ const config: PluginProps['props'] = {
     return (
       <Tooltip title={title}>
         <Select
+          size="small"
           allowClear
           placeholder={title}
-          style={{ width: 100 }}
+          style={{ width: 70 }}
           bordered={false}
           onChange={handleChange}
           value={get(Editor.marks(editor), key)}

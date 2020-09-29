@@ -1,10 +1,14 @@
-import { Select, Tooltip } from 'antd';
+import { BgColorsOutlined, DownOutlined } from '@ant-design/icons';
+import { Dropdown } from 'antd';
 import { get, includes, map } from 'lodash';
-import React from 'react';
+import React, { useState } from 'react';
 import regHex from 'rgb-hex';
 import { Editor } from 'slate';
 import { useSlate } from 'slate-react';
+import { YForm } from 'yforms';
 import { colors, PluginProps } from '..';
+
+import '../color/index.less';
 
 const key = 'backgroundColor';
 
@@ -31,30 +35,64 @@ const config: PluginProps['props'] = {
     const handleChange = (value: any) => {
       Editor.addMark(editor, key, value);
     };
+    const [color, setColor] = useState('');
+    const activeColor = get(Editor.marks(editor), key);
+    const [visible, setVisible] = useState(false);
+
     return (
-      <Tooltip title={title}>
-        <Select
-          allowClear
-          placeholder={title}
-          style={{ width: 100 }}
-          bordered={false}
-          onChange={handleChange}
-          value={get(Editor.marks(editor), key)}
-        >
-          {map(list, value => {
-            return (
-              <Select.Option
-                title={value}
-                style={{ color: value }}
-                key={value}
-                value={value}
+      <>
+        <Dropdown.Button
+          size="small"
+          visible={visible}
+          onVisibleChange={flag => setVisible(flag)}
+          icon={<DownOutlined />}
+          title={title}
+          style={{ padding: '0 5px 0 0' }}
+          placement="bottomCenter"
+          overlay={
+            <div className="color">
+              {map(list, value => {
+                return (
+                  <div
+                    onClick={() => {
+                      setColor(value);
+                      handleChange(activeColor === value ? undefined : value);
+                    }}
+                    key={value}
+                    className="tag"
+                    style={{ backgroundColor: value }}
+                  >
+                    &nbsp;
+                  </div>
+                );
+              })}
+              <YForm
+                onFinish={values => {
+                  handleChange(values.color);
+                  setColor(values.color);
+                  setVisible(false);
+                }}
               >
-                背景颜色
-              </Select.Option>
-            );
-          })}
-        </Select>
-      </Tooltip>
+                {[
+                  {
+                    noStyle: true,
+                    type: 'input',
+                    name: 'color',
+                    componentProps: { placeholder: '自定义颜色 #ccc/red' },
+                  },
+                ]}
+              </YForm>
+            </div>
+          }
+        >
+          <BgColorsOutlined
+            onClick={() =>
+              handleChange(activeColor === color ? undefined : color)
+            }
+            style={{ color }}
+          />
+        </Dropdown.Button>
+      </>
     );
   },
   processLeaf: ({ leaf }) => {

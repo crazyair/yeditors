@@ -43,7 +43,8 @@ const config: PluginProps['props'] = {
     return (
       <Select
         allowClear
-        style={{ width: 100 }}
+        size="small"
+        style={{ width: 80 }}
         placeholder={title}
         bordered={false}
         onChange={handleChange}
