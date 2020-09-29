@@ -1,8 +1,8 @@
+import { Divider } from 'antd';
 import React, { useRef } from 'react';
 import { useSlate } from 'slate-react';
 
 import './index.less';
-// import './style.less';
 
 export default React.memo(({ plugins }: any) => {
   const editor = useSlate();
@@ -16,7 +16,7 @@ export default React.memo(({ plugins }: any) => {
       {plugins.map((item: any, index: string) => {
         if ('isShow' in item && !item.isShow) return null;
         if (item.type === 'line') {
-          return <span key={index} />;
+          return <Divider key={index} type="vertical" />;
         }
         const { ToolbarButton, config } = item.props;
         return <ToolbarButton key={index} config={config} />;
