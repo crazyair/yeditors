@@ -11,7 +11,10 @@ export interface PluginProps {
     withHtml?: () => any;
     withStyle?: () => any;
     withEditor?: (editor: Editor, plugin: Array<PluginProps>) => any;
-    ToolbarButton?: (props: { config: any }) => React.ReactNode;
+    ToolbarButton?: (props: {
+      config: any;
+      plusRender: any;
+    }) => React.ReactNode;
     processLeaf?: (props: any) => Object;
     processElement?: (props: any) => React.ReactNode;
   };
@@ -87,6 +90,7 @@ const pluginMap: PluginProps[] = [
   { type: 'indent', props: require('./indent').default },
   { type: 'line' },
   { type: 'textAlign', props: require('./textAlign').default },
+  // { type: 'block', props: require('./block').default },
   { type: 'line' },
   { type: 'image', props: require('./image').default },
   { type: 'link', props: require('./link').default },
@@ -96,7 +100,7 @@ const pluginMap: PluginProps[] = [
   { type: 'withHtml', isShow: false, props: require('./withHtml').default },
   // { type: 'temp', props: require('./temp').default },
   { type: 'list', props: require('./list').default },
-  { type: 'delete', props: require('./delete').default },
+  // { type: 'delete', props: require('./delete').default },
   { type: 'question', props: require('./question').default },
   { type: 'line' },
   { type: 'history', props: require('./history').default },

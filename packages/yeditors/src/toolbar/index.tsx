@@ -1,5 +1,5 @@
 import { Divider } from 'antd';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useSlate } from 'slate-react';
 
 import './index.less';
@@ -11,6 +11,9 @@ export default React.memo(({ plugins }: any) => {
     ref.current = editor.selection;
   }
   editor.selection = ref.current;
+
+  const [morePluginRender, setMorePluginRender] = useState();
+
   return (
     <>
       {plugins.map((item: any, index: string) => {
@@ -19,8 +22,15 @@ export default React.memo(({ plugins }: any) => {
           return <Divider key={index} type="vertical" />;
         }
         const { ToolbarButton, config } = item.props;
-        return <ToolbarButton key={index} config={config} />;
+        return (
+          <ToolbarButton
+            key={index}
+            config={config}
+            plusRender={setMorePluginRender}
+          />
+        );
       })}
+      {morePluginRender}
     </>
   );
 });

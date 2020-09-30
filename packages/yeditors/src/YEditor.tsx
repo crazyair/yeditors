@@ -5,7 +5,7 @@ import { merge, sortBy } from 'lodash';
 import isHotkey from 'is-hotkey';
 
 import './index.less';
-import Toolbar2 from './toolbar';
+import Toolbar from './toolbar';
 import pluginMap from './plugins';
 import { YEditorContext } from './Context';
 import { getText } from './utils';
@@ -33,10 +33,10 @@ const YEditor = (props: any) => {
   }, []);
 
   return (
-    <YEditorContext.Provider value={{ editor }}>
+    <YEditorContext.Provider value={{ editor, plugins: pluginMap }}>
       <Slate editor={editor} value={value} onChange={onChange}>
         <div className="editor-main">
-          <Toolbar2 plugins={pluginMap} />
+          <Toolbar plugins={pluginMap} />
           <hr />
           <Editable
             className="editor"

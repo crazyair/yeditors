@@ -7,7 +7,7 @@ import { map, split, trim } from 'lodash';
 const key = 'list';
 
 export default (props: any) => {
-  const { children, initialValues } = props;
+  const { children, initialValues, disabled } = props;
   const editor = useSlate();
   const [visible, setVisible] = useState(false);
 
@@ -30,7 +30,9 @@ export default (props: any) => {
     <>
       {React.cloneElement(children, {
         onClick: () => {
-          setVisible(true);
+          if (!disabled) {
+            setVisible(true);
+          }
         },
       })}
       <YForm.FormModal
