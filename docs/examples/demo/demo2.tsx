@@ -6,14 +6,6 @@ const initialValue = [
     type: 'paragraph',
     children: [
       {
-        text: '多层级坑位',
-      },
-    ],
-  },
-  {
-    type: 'paragraph',
-    children: [
-      {
         text: '',
       },
     ],
@@ -22,6 +14,7 @@ const initialValue = [
     type: 'list',
     props: {
       field: 'children',
+      style: 'color:red;\n',
     },
     children: [
       {
@@ -29,25 +22,29 @@ const initialValue = [
         children: [
           {
             text: '${name}',
+            color: '#F54236',
           },
         ],
+        textIndent: 2,
       },
+    ],
+  },
+  {
+    type: 'list',
+    props: {
+      field: 'children',
+      style: 'color:red;\n',
+    },
+    children: [
       {
-        type: 'list',
-        props: {
-          field: 'children',
-          style: 'margin:0 20px',
-        },
+        type: 'paragraph',
         children: [
           {
-            type: 'paragraph',
-            children: [
-              {
-                text: '${name}',
-              },
-            ],
+            text: '${age}',
+            color: '#f39c12',
           },
         ],
+        textIndent: 4,
       },
     ],
   },
@@ -63,17 +60,7 @@ const initialValue = [
 const data = {
   name: '张三',
   age: '10',
-  list: [
-    { name: '张三1', age: '101' },
-    { name: '张三2', age: '102' },
-    { name: '张三3', age: '103' },
-  ],
-  children: [
-    {
-      name: '第一层',
-      children: [{ name: '第二层', children: [{ name: '第三层' }] }],
-    },
-  ],
+  children: [{ name: '张三', age: '10' }],
 };
 export default () => {
   return <Base initialValue={initialValue} data={data} />;

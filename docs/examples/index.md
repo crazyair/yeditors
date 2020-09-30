@@ -10,3 +10,7 @@ nav:
 ## 基础使用
 
 <code src="./demo/demo1.tsx" />
+
+## 2
+
+<code src="./demo/demo2.tsx" />

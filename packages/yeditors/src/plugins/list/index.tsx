@@ -16,10 +16,8 @@ const key = 'list';
 const PlusRender = React.memo(() => {
   const editor = useSlate();
 
-  const match = Editor.above(editor, {
-    match: n => n.type === key,
-  });
-  const isActive = !!match;
+  const match = Editor.above(editor, { match: n => n.type === key });
+  const disabled = !match;
   return (
     <>
       <LinkForm>
@@ -29,12 +27,12 @@ const PlusRender = React.memo(() => {
           </Button>
         </Tooltip>
       </LinkForm>
-      <LinkForm initialValues={get(match, [0, 'props'])} disabled={!isActive}>
+      <LinkForm initialValues={get(match, [0, 'props'])} disabled={disabled}>
         <Tooltip title="编辑块">
           <Button
             icon={<EditOutlined />}
-            disabled={!isActive}
-            style={activeStyle(isActive)}
+            disabled={disabled}
+            style={activeStyle(!disabled)}
             type="text"
           >
             编辑块
