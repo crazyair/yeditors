@@ -30,7 +30,7 @@ export default React.memo(({ plugins }: any) => {
           />
         );
       })}
-      {morePluginRender}
+      <div>{morePluginRender}</div>
     </>
   );
 });
