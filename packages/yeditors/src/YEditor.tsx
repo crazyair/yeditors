@@ -12,8 +12,13 @@ import { getText } from './utils';
 
 const initialValue = [{ type: 'paragraph', children: [{ text: '' }] }];
 
-const YEditor = (props: any) => {
-  const { value = initialValue, onChange } = props;
+export interface YEditorProps {
+  value?: any;
+  onChange?: (e: any) => void;
+}
+
+const YEditor = (props: YEditorProps) => {
+  const { value = initialValue, onChange = () => {} } = props;
   const renderElement = useCallback(
     props => <Element {...props} plugins={pluginMap} />,
     [],
