@@ -1,0 +1,52 @@
+{
+  "name": "yeditors",
+  "version": "0.0.13",
+  "description": "yeditors",
+  "keywords": [
+    "slate",
+    "editor"
+  ],
+  "author": "黄建峰 <645381995@qq.com>",
+  "homepage": "https://github.com/crazyair/yeditors#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "authors": {
+    "name": "crazyair",
+    "email": "645381995@qq.com"
+  },
+  "files": [
+    "es",
+    "lib",
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crazyair/yeditors.git",
+    "directory": "yeditors"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/crazyair/yeditors/issues"
+  },
+  "peerDependencies": {
+    "@ant-design/icons": "^4.x",
+    "antd": "4.x",
+    "yforms": "^1.x"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.11.2",
+    "emotion": "^10.0.27",
+    "is-url": "^1.2.4",
+    "rgb-hex": "^3.0.0",
+    "slate": "^0.59.0",
+    "slate-history": "^0.59.0",
+    "slate-hyperscript": "^0.59.0",
+    "slate-react": "^0.59.0"
+  },
+  "devDependencies": {
+    "@types/is-url": "^1.2.28"
+  }
+}

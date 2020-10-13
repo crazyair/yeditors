@@ -1,0 +1,34 @@
+.editor-main {
+  border: 1px solid #cccccc;
+  box-shadow: 1px 1px 10px #cccccc;
+  padding: 5px;
+  .editor {
+    min-height: 100px;
+    overflow-y: auto;
+    max-height: 500px;
+    .image-form {
+      img {
+        // 图片 hover 加蒙层
+        cursor: pointer;
+        &:hover {
+          filter: contrast(0.7);
+        }
+      }
+    }
+    .temp {
+      .content {
+        &:hover {
+          span {
+            box-shadow: inset 0px 0px 0px 1px #1890ff;
+          }
+        }
+      }
+    }
+  }
+  .pr5 {
+    padding-right: 5px;
+  }
+  .mr5 {
+    margin-right: 5px;
+  }
+}
