@@ -46,7 +46,7 @@ export const colors = [
 export const getValue = (editor: Editor, key: string) => {
   let current;
   const [match] = Editor.nodes(editor, {
-    match: n => includes(`${n.type}`, key),
+    match: (n) => includes(`${n.type}`, key),
   });
   if (match && match[0]) {
     current = `${match[0].type}`;
@@ -56,7 +56,7 @@ export const getValue = (editor: Editor, key: string) => {
 };
 export const getValue2 = (editor: Editor, field: string = 'type') => {
   const [match] = Editor.nodes(editor, {
-    match: node => !!node[field],
+    match: (node) => !!node[field],
   });
   return get(match, [0, field]);
 };
@@ -90,7 +90,6 @@ const pluginMap: PluginProps[] = [
   { type: 'indent', props: require('./indent').default },
   { type: 'line' },
   { type: 'textAlign', props: require('./textAlign').default },
-  // { type: 'block', props: require('./block').default },
   { type: 'line' },
   { type: 'image', props: require('./image').default },
   { type: 'link', props: require('./link').default },
@@ -98,10 +97,9 @@ const pluginMap: PluginProps[] = [
   { type: 'copyStyle', props: require('./copyStyle').default },
   { type: 'line' },
   { type: 'withHtml', isShow: false, props: require('./withHtml').default },
-  // { type: 'temp', props: require('./temp').default },
   { type: 'list', props: require('./list').default },
-  // { type: 'delete', props: require('./delete').default },
   { type: 'question', props: require('./question').default },
+  { type: 'eye', props: require('./eye').default },
   { type: 'line' },
   { type: 'history', props: require('./history').default },
 ];

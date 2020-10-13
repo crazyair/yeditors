@@ -1,14 +1,11 @@
 import React, { useRef } from 'react';
 import { YForm } from 'yforms';
 import { message } from 'antd';
-import { useRouteMatch } from 'umi';
 // import { useClipboard } from 'use-clipboard-copy';
 import { YEditor } from 'yeditors';
 
 export default (props: any) => {
   const { initialValue, data } = props;
-  const match = useRouteMatch();
-  const { submit } = YForm.useSubmit({ params: match.params });
   const [form] = YForm.useForm();
   const buildPreviewHtml = (html: any) => {
     return `
@@ -34,9 +31,6 @@ export default (props: any) => {
     ref.current.document.close();
   };
 
-  const onFinish = async (values: any) => {
-    console.log('v', values);
-  };
   // const clipboard = useClipboard();
 
   return (
@@ -44,11 +38,7 @@ export default (props: any) => {
       <YForm
         name="basic"
         form={form}
-        scenes={{ noSaveForm: true }}
-        submit={submit}
-        onFinish={onFinish}
-        onCancel={() => {}}
-        params={match.params}
+        scenes={{ noCol: true }}
         getInitialValues={async () => {
           return { content: JSON.stringify(initialValue) };
         }}
@@ -56,11 +46,9 @@ export default (props: any) => {
         {[
           {
             type: 'custom',
-            label: '模板',
             name: 'content',
-            scenes: { required: false },
-            deFormat: value => value && JSON.parse(value),
-            format: value => JSON.stringify(value),
+            deFormat: (value) => value && JSON.parse(value),
+            format: (value) => JSON.stringify(value),
             children: <YEditor />,
           },
           {
