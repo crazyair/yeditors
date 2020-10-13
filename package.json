@@ -30,6 +30,7 @@
     ]
   },
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "antd": "^4.7.0",
     "react": "^16.13.1",
     "use-clipboard-copy": "^0.1.2",
