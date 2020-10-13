@@ -1,6 +1,6 @@
 {
   "name": "yeditors",
-  "version": "0.0.6",
+  "version": "0.0.13",
   "description": "yeditors",
   "keywords": [
     "slate",
@@ -32,8 +32,8 @@
     "url": "https://github.com/crazyair/yeditors/issues"
   },
   "peerDependencies": {
-    "antd": "4.x",
     "@ant-design/icons": "^4.x",
+    "antd": "4.x",
     "yforms": "^1.x"
   },
   "dependencies": {
