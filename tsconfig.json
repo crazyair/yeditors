@@ -1,16 +1,12 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "esnext",
     "moduleResolution": "node",
-    "importHelpers": true,
-    "jsx": "react",
-    "esModuleInterop": true,
-    "sourceMap": true,
-    "skipLibCheck": true,
-    "strict": true,
     "baseUrl": "./packages",
-    "paths": { "yeditors": ["yeditors/src"] },
-    "allowSyntheticDefaultImports": true
+    "paths": { "yforms": ["yeditors/src"] },
+    "jsx": "preserve",
+    "declaration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true
   }
 }
