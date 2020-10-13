@@ -1,6 +1,6 @@
 {
   "name": "yeditors",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "yeditors",
   "keywords": [
     "slate",
@@ -32,11 +32,12 @@
     "url": "https://github.com/crazyair/yeditors/issues"
   },
   "peerDependencies": {
-    "antd": "4.x",
     "@ant-design/icons": "^4.x",
+    "antd": "4.x",
     "yforms": "^1.x"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "@babel/runtime": "^7.11.2",
     "emotion": "^10.0.27",
     "is-url": "^1.2.4",

@@ -30,20 +30,20 @@
     ]
   },
   "dependencies": {
-    "antd": "^4.6.5",
-    "react": "^16.12.0",
+    "antd": "^4.7.0",
+    "react": "^16.13.1",
     "use-clipboard-copy": "^0.1.2",
-    "yforms": "^1.3.4"
+    "yforms": "^1.3.5"
   },
   "devDependencies": {
     "@umijs/fabric": "^2.2.2",
-    "@umijs/test": "^3.0.5",
-    "dumi": "^1.0.10",
-    "father-build": "^1.17.2",
-    "gh-pages": "^3.0.0",
+    "@umijs/test": "^3.2.23",
+    "dumi": "^1.0.34",
+    "father-build": "^1.18.5",
+    "gh-pages": "^3.1.0",
     "lerna": "^3.22.1",
-    "lint-staged": "^10.0.7",
-    "prettier": "^1.19.1",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2",
     "yorkie": "^2.0.0"
   }
 }
