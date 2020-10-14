@@ -49,7 +49,7 @@ export default (props: any) => {
             name: 'content',
             deFormat: (value) => value && JSON.parse(value),
             format: (value) => JSON.stringify(value),
-            children: <YEditor />,
+            children: <YEditor dataSource={data} />,
           },
           {
             type: 'space',

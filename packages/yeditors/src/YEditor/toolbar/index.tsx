@@ -4,7 +4,7 @@ import { useSlate } from 'slate-react';
 
 import './index.less';
 
-export default React.memo(({ plugins }: any) => {
+export default React.memo(({ plugins, dataSource }: any) => {
   const editor = useSlate();
   const ref = useRef<any>(editor.selection);
   if (editor.selection != null) {
@@ -26,6 +26,7 @@ export default React.memo(({ plugins }: any) => {
           <ToolbarButton
             key={index}
             config={config}
+            dataSource={dataSource}
             plusRender={setMorePluginRender}
           />
         );

@@ -13,6 +13,7 @@ export interface PluginProps {
     withEditor?: (editor: Editor, plugin: Array<PluginProps>) => any;
     ToolbarButton?: (props: {
       config: any;
+      dataSource: any;
       plusRender: any;
     }) => React.ReactNode;
     processLeaf?: (props: any) => Object;

@@ -22,7 +22,7 @@ const buildPreviewHtml = (html: any) => {
 
 const config: PluginProps['props'] = {
   config: { title: '预览' },
-  ToolbarButton: React.memo(({ config }) => {
+  ToolbarButton: React.memo(({ config, dataSource }) => {
     const ref = useRef<any>();
     const preview = (html: string) => {
       if (ref.current) {
@@ -34,7 +34,7 @@ const config: PluginProps['props'] = {
     };
     const editor = useSlate();
     const handleClick = () => {
-      preview(YEditor.serialize(editor.children as any));
+      preview(YEditor.serialize(editor.children as any, { data: dataSource }));
     };
 
     return (

@@ -14,17 +14,18 @@ const initialValue = [{ type: 'paragraph', children: [{ text: '' }] }];
 
 export interface YEditorProps {
   value?: any;
+  dataSource?: any;
   onChange?: (e: any) => void;
 }
 
 const YEditor = (props: YEditorProps) => {
-  const { value = initialValue, onChange = () => {} } = props;
+  const { value = initialValue, onChange = () => {}, dataSource } = props;
   const renderElement = useCallback(
-    props => <Element {...props} plugins={pluginMap} />,
+    (props) => <Element {...props} plugins={pluginMap} />,
     [],
   );
   const renderLeaf = useCallback(
-    props => <Leaf {...props} plugins={pluginMap} />,
+    (props) => <Leaf {...props} plugins={pluginMap} />,
     [],
   );
   const editor = useMemo(() => {
@@ -41,7 +42,7 @@ const YEditor = (props: YEditorProps) => {
     <YEditorContext.Provider value={{ editor, plugins: pluginMap }}>
       <Slate editor={editor} value={value} onChange={onChange}>
         <div className="editor-main">
-          <Toolbar plugins={pluginMap} />
+          <Toolbar plugins={pluginMap} dataSource={dataSource} />
           <hr />
           <Editable
             className="editor"
@@ -51,7 +52,7 @@ const YEditor = (props: YEditorProps) => {
             // placeholder="Enter some rich text…"
             spellCheck
             autoFocus
-            onKeyUp={event => {
+            onKeyUp={(event) => {
               // 编辑器为空
               if (event.key === 'Backspace' && !getText(editor.children)) {
                 // 删除所有数据
@@ -60,7 +61,7 @@ const YEditor = (props: YEditorProps) => {
                 Transforms.insertNodes(editor, initialValue);
               }
             }}
-            onKeyDown={event => {
+            onKeyDown={(event) => {
               if (editor.selection) {
                 const selectionPath = Editor.path(editor, editor.selection);
 
@@ -106,7 +107,7 @@ export const Element = React.memo((props: any) => {
   // 对于 block 放最后，方便最后集合
   const list = sortBy(
     plugins,
-    item => (item.props && item.props.config.block) || false,
+    (item) => (item.props && item.props.config.block) || false,
   );
   list.forEach((item: any) => {
     if (item.props && item.props.processElement) {
