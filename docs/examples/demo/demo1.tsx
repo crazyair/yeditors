@@ -1,5 +1,5 @@
-import React from 'react';
-import Base from './base';
+import React, { useState } from 'react';
+import { YEditor } from 'yeditors';
 
 const initialValue = [
   {
@@ -75,6 +75,12 @@ const data = {
     },
   ],
 };
+
 export default () => {
-  return <Base initialValue={initialValue} data={data} />;
+  const [value, setValue] = useState(initialValue);
+  return (
+    <div style={{ padding: 20 }}>
+      <YEditor value={value} onChange={setValue} dataSource={data} />{' '}
+    </div>
+  );
 };
