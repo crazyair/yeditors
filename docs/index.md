@@ -9,4 +9,3 @@ footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](http
 ---
 
 <code src="./index.tsx" />
-12345
