@@ -1,7 +1,7 @@
 ---
 hero:
   title: yeditors
-  desc: 一个基于 slate 封装的编辑器，起名叫 yeditors
+  desc: 一个基于 slate 封装的编辑器，起名叫 yeditors1
   actions:
     - text: 快速上手
       link: /examples
