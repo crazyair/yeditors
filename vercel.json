@@ -1,17 +1,10 @@
 {
   "version": 2,
-  "builds": [{ "src": "docs-dist/**/*", "use": "@now/static" }],
-  "routes": [
+  "builds": [
     {
-      "src": "/(.*[.js|.css])",
-      "headers": { "Cache-Control": "max-age=63072000" },
-      "continue": true
-    },
-    { "src": "/(.*)", "dest": "/docs-dist/$1" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/docs-dist/index.html" }
-  ],
-  "github": {
-    "enable": false
-  }
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": { "distDir": "docs-dist" }
+    }
+  ]
 }
