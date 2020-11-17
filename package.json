@@ -11,11 +11,9 @@
     "release": "npm run build && npm publish",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
-    "bootstrap": "yarn ; lerna bootstrap",
+    "bootstrap": "lerna bootstrap",
     "pub": "yarn build && lerna publish",
-    "test:coverage": "umi-test --coverage",
-    "now-build": "npm run docs:build"
-
+    "test:coverage": "umi-test --coverage"
   },
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
