@@ -18,4 +18,4 @@ jobs:
           yarn
           yarn bootstrap
           yarn docs:build
-          now --token=$ZEIT_TOKEN --prod --confirm --force
+          now --token=$ZEIT_TOKEN --dev --confirm --force
