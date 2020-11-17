@@ -1,0 +1,44 @@
+on:
+  push:
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+name: Create Release
+
+jobs:
+  publish-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+          registry-url: https://registry.npmjs.org/
+      - run: yarn
+      - run: yarn bootstrap
+      - run: yarn pub from-package --force-publish --yes
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+          NPM_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+  # build:
+  #   needs: publish-npm
+  #   name: Create Release
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@master
+  #     - name: get changelog
+  #       id: changelog
+  #       run: node ./scripts/getChangeLog.js
+  #     - name: Create Release
+  #       id: create_release
+  #       uses: actions/create-release@v1
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       with:
+  #         tag_name: ${{ github.ref }}
+  #         release_name: ${{ github.ref }}
+  #         # see https://github.com/marketplace/actions/autochangelog
+  #         body: ${{ steps.changelog.outputs.changelog}}
+  #         draft: false
+  #         prerelease: false

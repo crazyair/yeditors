@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "moduleResolution": "node",
+    "baseUrl": "./packages",
+    "paths": { "yforms": ["yeditors/src"] },
+    "jsx": "preserve",
+    "declaration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true
+  }
+}
