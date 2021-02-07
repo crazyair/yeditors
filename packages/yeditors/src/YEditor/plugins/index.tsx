@@ -1,5 +1,5 @@
 import React from 'react';
-import { TooltipProps } from 'antd/lib/tooltip';
+import type { TooltipProps } from 'antd/lib/tooltip';
 import { get, includes, split } from 'lodash';
 import { Editor } from 'slate';
 
@@ -7,16 +7,16 @@ export interface PluginProps {
   type: string;
   isShow?: boolean;
   props?: {
-    config: Object;
+    config: Record<string, any>;
     withHtml?: () => any;
     withStyle?: () => any;
-    withEditor?: (editor: Editor, plugin: Array<PluginProps>) => any;
+    withEditor?: (editor: Editor, plugin: PluginProps[]) => any;
     ToolbarButton?: (props: {
       config: any;
       dataSource: any;
       plusRender: any;
     }) => React.ReactNode;
-    processLeaf?: (props: any) => Object;
+    processLeaf?: (props: any) => Record<string, any>;
     processElement?: (props: any) => React.ReactNode;
   };
 }
