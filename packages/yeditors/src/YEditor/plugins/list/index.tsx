@@ -16,7 +16,7 @@ const key = 'list';
 const PlusRender = React.memo(() => {
   const editor = useSlate();
 
-  const match = Editor.above(editor, { match: n => n.type === key });
+  const match = Editor.above(editor, { match: (n) => n.type === key });
   const disabled = !match;
   return (
     <>
@@ -56,7 +56,7 @@ const config: PluginProps['props'] = {
           <Button
             onClick={() => {
               plusRender(isClick ? undefined : <PlusRender />);
-              setIsClick(c => !c);
+              setIsClick((c) => !c);
             }}
             type="text"
             icon={<BlockOutlined />}
@@ -71,7 +71,7 @@ const config: PluginProps['props'] = {
       const attr: HTMLAttributes<any> = { style: styleToObj(style) };
       const isEditor = Object.keys(attributes).length > 0;
       if (isEditor) {
-        attr.className = 'list';
+        attr.className = 'yeditors-list';
       }
       return (
         <div {...attr} data-type={key}>
