@@ -14,3 +14,5 @@ nav:
 ## 块解析场景
 
 <code src="./demo/demo2.tsx" />
+
+<code src="./demo/demo3.tsx" />

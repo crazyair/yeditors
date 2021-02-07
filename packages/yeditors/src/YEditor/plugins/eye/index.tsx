@@ -2,10 +2,10 @@ import React, { useRef } from 'react';
 import { CopyOutlined, EyeOutlined } from '@ant-design/icons';
 import { Button, Tooltip } from 'antd';
 import { useClipboard } from 'use-clipboard-copy';
+import { useSlate } from 'slate-react';
 
 import { PluginProps } from '..';
 import YEditor from '../..';
-import { useSlate } from 'slate-react';
 
 const buildPreviewHtml = (html: any) => {
   return `
@@ -15,7 +15,7 @@ const buildPreviewHtml = (html: any) => {
         <title>预览</title>
       </head>
       <body>
-        <div class="container" style="padding: 0;margin: 0 auto;min-width: 320px;max-width: 620px;box-shadow: 1px 1px 20px rgba(99,99,99,.1);">${html}</div>
+        <div class="container" style="padding: 0;margin: 0 auto;min-width: 320px;max-width: 768px;box-shadow: 1px 1px 20px rgba(99,99,99,.1);">${html}</div>
       </body>
     </html>
   `;

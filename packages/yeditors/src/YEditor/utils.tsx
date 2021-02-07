@@ -31,7 +31,7 @@ interface SerializeProps {
 // 样式转 React css
 export const styleToObj = (styles: string | null | undefined) => {
   const obj: { [key: string]: any } = {};
-  forEach(split(styles, ';'), item => {
+  forEach(split(styles, ';'), (item) => {
     if (item && includes(item, ':')) {
       const index = item.indexOf(':');
       const property = trim(item.substring(0, index));
@@ -55,7 +55,7 @@ export const isTemp = (value?: string) => {
 
 const replaceMessage = (template: string, kv: any, prevField?: any) => {
   if (!template) return 'no data';
-  return template.replace(/\$\{[^}]+\}/g, str => {
+  return template.replace(/\$\{[^}]+\}/g, (str) => {
     const key = str.slice(2, -1);
     return get(kv, prevField ? concat(prevField, key) : key);
   });
@@ -90,7 +90,7 @@ export const serialize = (nodeData: SerializeProps[], props?: any): string => {
       );
     }
 
-    const nextState = produce(node, draftState => {
+    const nextState = produce(node, (draftState) => {
       if (node.type === 'list' && node.props?.field) {
         const dataField = _parentField
           ? concat(_parentField, _parentIndex, node.props?.field)
@@ -101,7 +101,7 @@ export const serialize = (nodeData: SerializeProps[], props?: any): string => {
 
         forEach(get(data, dataField), (_, index) => {
           list.push(
-            ...map(draftState.children, item => {
+            ...map(draftState.children, (item) => {
               return { ...item, index };
             }),
           );
@@ -153,7 +153,7 @@ export const getTempFields = (node: SerializeProps[]) => {
         data.push({ type: 'string', name: replace(node.text, /\{|\}/g, '') });
       }
     }
-    map(node.children, n => {
+    map(node.children, (n) => {
       func(n);
     });
   };
@@ -185,7 +185,7 @@ export const deserialize = (el: any, keys: any) => {
   const { nodeName } = element;
 
   let children: any = Array.from(element.childNodes)
-    .map(n => deserialize(n, keys))
+    .map((n) => deserialize(n, keys))
     .flat();
 
   if (element.nodeName === 'BODY') {
@@ -195,7 +195,7 @@ export const deserialize = (el: any, keys: any) => {
   const _attrs = {};
   const style = styleToObj(element.getAttribute('style'));
   if (!isEmpty(style)) {
-    Object.keys(style).forEach(item => {
+    Object.keys(style).forEach((item) => {
       if (keys.style[item]) {
         const { attrs } = keys.style[item](style[item]);
         merge(_attrs, attrs);
@@ -226,7 +226,7 @@ const LIST_TYPES = ['numbered-list', 'bulleted-list'];
 
 export const isBlockActive = (editor: Editor, format: string) => {
   const [match] = Editor.nodes(editor, {
-    match: n => n.type === format,
+    match: (n) => n.type === format,
   });
 
   return !!match;
@@ -237,7 +237,7 @@ export const toggleBlock = (editor: Editor, format: string) => {
   const isList = LIST_TYPES.includes(format);
 
   Transforms.unwrapNodes(editor, {
-    match: n => LIST_TYPES.includes(n.type as string),
+    match: (n) => LIST_TYPES.includes(n.type as string),
     split: true,
   });
 
@@ -267,12 +267,12 @@ export const toggleMark = (editor: Editor, format: string) => {
 };
 
 export const isLinkActive = (editor: Editor) => {
-  const [link] = Editor.nodes(editor, { match: n => n.type === 'link' });
+  const [link] = Editor.nodes(editor, { match: (n) => n.type === 'link' });
   return !!link;
 };
 
 export const unwrapLink = (editor: Editor) => {
-  Transforms.unwrapNodes(editor, { match: n => n.type === 'link' });
+  Transforms.unwrapNodes(editor, { match: (n) => n.type === 'link' });
 };
 
 export const wrapLink = (editor: Editor, props: any, text: string) => {
@@ -293,7 +293,7 @@ export const wrapLink = (editor: Editor, props: any, text: string) => {
 };
 
 export const editLink = (editor: Editor, props: any, text: string) => {
-  const [link] = Editor.nodes(editor, { match: n => n.type === 'link' });
+  const [link] = Editor.nodes(editor, { match: (n) => n.type === 'link' });
   // 改链接地址
   const { selection } = editor;
   if (selection) {
@@ -306,7 +306,7 @@ export const editLink = (editor: Editor, props: any, text: string) => {
     Transforms.setNodes(
       editor,
       { type: 'link', props },
-      { match: n => n.type === 'link' },
+      { match: (n) => n.type === 'link' },
     );
     Transforms.insertText(editor, text);
   }
@@ -319,9 +319,9 @@ export const insertLink = (editor: Editor, props: any, text: string) => {
 };
 
 export const getText = (value: any[]) => {
-  return value.map(n => Node.string(n)).join('\n');
+  return value.map((n) => Node.string(n)).join('\n');
 };
 
 export const IconFont = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_2029574_we3z5f56g6.js',
+  scriptUrl: '//at.alicdn.com/t/font_2029574_oird2d4ld7j.js',
 });

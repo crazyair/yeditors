@@ -1,6 +1,6 @@
 import React from 'react';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import { merge } from 'lodash';
+import { merge, get } from 'lodash';
 import { Transforms } from 'slate';
 import { useSlate } from 'slate-react';
 import { Button, Tooltip } from 'antd';
@@ -65,8 +65,14 @@ const config: PluginProps['props'] = {
     );
   }),
   processElement: ({ element, attributes, children }) => {
+    const _style: Record<string, any> = {};
+    // 根据里面字体大小确定 indent 的 font size 大小
+    const firstChildren = get(element, ['children', 0], {});
+    if (firstChildren.fontSize) {
+      _style.fontSize = firstChildren.fontSize;
+    }
     if (element[key]) {
-      merge(attributes, { style: { [key]: `${element[key]}em` } });
+      merge(attributes, { style: { [key]: `${element[key]}em`, ..._style } });
       return <div {...attributes}>{children}</div>;
     }
   },

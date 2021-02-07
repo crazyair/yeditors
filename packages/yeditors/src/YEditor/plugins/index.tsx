@@ -78,6 +78,7 @@ const pluginMap: PluginProps[] = [
   { type: 'italic', props: require('./italic').default },
   { type: 'underline', props: require('./underlined').default },
   { type: 'line-through', props: require('./lineThrough').default },
+  { type: 'sup', props: require('./sup').default },
   { type: 'fontSize', props: require('./fontSize').default },
   { type: 'lineHeight', props: require('./lineHeight').default },
   { type: 'letterSpacing', props: require('./letterSpacing').default },

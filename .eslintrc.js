@@ -28,5 +28,6 @@ module.exports = {
     'no-console': 0,
     '@typescript-eslint/naming-convention': 0,
     'react/no-array-index-key': 0,
+    '@typescript-eslint/no-shadow': 0,
   },
 };
