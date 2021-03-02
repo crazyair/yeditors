@@ -40,7 +40,9 @@ const config: PluginProps['props'] = {
         YEditor.serialize(editor.children as any, { data: dataSource }),
       );
       if (isCopy) {
-        clipboard.copy(html);
+        clipboard.copy(
+          YEditor.serialize(editor.children as any, { data: dataSource }),
+        );
       } else {
         preview(html);
       }
