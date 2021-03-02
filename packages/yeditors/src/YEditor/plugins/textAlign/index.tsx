@@ -88,7 +88,13 @@ const config: PluginProps['props'] = {
   }),
   processElement: ({ element, attributes, children }) => {
     if (element[key]) {
-      merge(attributes, { style: { textAlign: element[key] } });
+      merge(attributes, {
+        style: {
+          textAlign: element[key],
+          // 支持火狐两端对齐
+          ...(element[key] === 'justify' ? { textJustify: 'distribute' } : {}),
+        },
+      });
       return <div {...attributes}>{children}</div>;
     }
   },
