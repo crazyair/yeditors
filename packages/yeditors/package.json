@@ -41,10 +41,10 @@
     "emotion": "^10.0.27",
     "is-url": "^1.2.4",
     "rgb-hex": "^3.0.0",
-    "slate": "^0.66.2",
+    "slate": "^0.66.5",
     "slate-history": "^0.66.0",
     "slate-hyperscript": "^0.66.0",
-    "slate-react": "^0.66.2"
+    "slate-react": "^0.66.7"
   },
   "devDependencies": {
     "@types/is-url": "^1.2.28"
