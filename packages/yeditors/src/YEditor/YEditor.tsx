@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { Editable, withReact, Slate } from 'slate-react';
+import type { Descendant } from 'slate';
 import { createEditor, Editor, Transforms, Path } from 'slate';
 import { merge, sortBy } from 'lodash';
 import isHotkey from 'is-hotkey';
@@ -10,13 +11,60 @@ import pluginMap from './plugins';
 import { YEditorContext } from './Context';
 import { getText } from './utils';
 
-const initialValue = [{ type: 'paragraph', children: [{ text: '' }] }];
+const initialValue: Descendant[] = [
+  { type: 'paragraph', children: [{ text: '' }] },
+];
 
 export interface YEditorProps {
   value?: any;
   dataSource?: any;
   onChange?: (e: any) => void;
 }
+
+export const Element = React.memo((props: any) => {
+  const { attributes = {}, children, element, plugins } = props;
+  let res = <div {...attributes}>{children}</div>;
+  // 对于 block 放最后，方便最后集合
+  const list = sortBy(
+    plugins,
+    (item) => (item.props && item.props.config.block) || false,
+  );
+  list.forEach((item: any) => {
+    if (item.props && item.props.processElement) {
+      const { block } = item.props.config;
+      const dom = item.props.processElement({ attributes, children, element });
+      if (dom) {
+        if (block) {
+          res = dom;
+        } else {
+          res = <res.type>{dom}</res.type>;
+        }
+      }
+    }
+  });
+  return res;
+});
+
+export const Leaf = React.memo((props: any) => {
+  const { attributes, children, leaf, plugins } = props;
+  const style = {};
+  plugins.forEach((item: any) => {
+    if (item.props && item.props.processLeaf) {
+      merge(
+        style,
+        item.props.processLeaf({ attributes, children, leaf, style }),
+      );
+    }
+  });
+  if (leaf.key) {
+    attributes.key = leaf.key;
+  }
+  return (
+    <span {...attributes} style={style}>
+      {children}
+    </span>
+  );
+});
 
 const YEditor = (props: YEditorProps) => {
   const { value = initialValue, onChange = () => {}, dataSource } = props;
@@ -100,50 +148,5 @@ const YEditor = (props: YEditorProps) => {
     </YEditorContext.Provider>
   );
 };
-
-export const Element = React.memo((props: any) => {
-  const { attributes = {}, children, element, plugins } = props;
-  let res = <div {...attributes}>{children}</div>;
-  // 对于 block 放最后，方便最后集合
-  const list = sortBy(
-    plugins,
-    (item) => (item.props && item.props.config.block) || false,
-  );
-  list.forEach((item: any) => {
-    if (item.props && item.props.processElement) {
-      const { block } = item.props.config;
-      const dom = item.props.processElement({ attributes, children, element });
-      if (dom) {
-        if (block) {
-          res = dom;
-        } else {
-          res = <res.type>{dom}</res.type>;
-        }
-      }
-    }
-  });
-  return res;
-});
-
-export const Leaf = React.memo((props: any) => {
-  const { attributes, children, leaf, plugins } = props;
-  const style = {};
-  plugins.forEach((item: any) => {
-    if (item.props && item.props.processLeaf) {
-      merge(
-        style,
-        item.props.processLeaf({ attributes, children, leaf, style }),
-      );
-    }
-  });
-  if (leaf.key) {
-    attributes.key = leaf.key;
-  }
-  return (
-    <span {...attributes} style={style}>
-      {children}
-    </span>
-  );
-});
 
 export default YEditor;
